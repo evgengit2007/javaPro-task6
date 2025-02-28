@@ -9,24 +9,21 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "type_product")
+public class TypeProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-
-    @Column(name = "username")
-    private String username;
 
     @OneToMany(mappedBy = "products")
     private Set<Products> products;
 
     @Override
     public String toString() {
-        return "User{" +
+        return "TypeProduct{" +
                 "id=" + id +
-                ", username='" + username + '\'' +
+                ", products=" + products +
                 '}';
     }
 }
