@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "products")
-public class Products {
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -21,7 +21,7 @@ public class Products {
     private String balance;
 
     @ManyToOne
-    @JoinColumn(name = "type_product")
+    @JoinColumn(name = "type_product_id")
     private TypeProduct typeProduct;
 
     @ManyToOne

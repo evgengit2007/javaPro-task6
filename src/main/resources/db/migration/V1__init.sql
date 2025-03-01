@@ -20,9 +20,9 @@ values
 
 CREATE TABLE public.type_product
 (id bigserial PRIMARY KEY,
- product varchar(25) unique);
+ name varchar(25) unique);
 
-insert into public.type_product (product)
+insert into public.type_product (name)
 values
     ('account'),
     ('card');
@@ -31,11 +31,11 @@ CREATE TABLE public.products
 (id bigserial PRIMARY KEY,
  account_number varchar(25),
  balance money,
- type_product bigint references public.type_product (id),
+ type_product_id bigint references public.type_product (id),
  user_id bigint references public.users (id));
 CREATE INDEX idx_products_id ON public.products(id);
 
-insert into public.products (account_number, balance, type_product, user_id)
+insert into public.products (account_number, balance, type_product_id, user_id)
 values
     ('40802810345124535123', 123.12, 1, 1),
     ('6453411547575745431', 323.44, 2, 3),

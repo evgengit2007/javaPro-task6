@@ -16,14 +16,14 @@ public class TypeProduct {
     @Column(name = "id")
     private Long id;
 
-    @OneToMany(mappedBy = "products")
-    private Set<Products> products;
+    @Column(name = "name")
+    private String name;
 
     @Override
     public String toString() {
         return "TypeProduct{" +
                 "id=" + id +
-                ", products=" + products +
+                ", name=" + name +
                 '}';
     }
 }
