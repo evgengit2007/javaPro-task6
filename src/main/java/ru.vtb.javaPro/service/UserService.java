@@ -5,7 +5,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
+import ru.vtb.javaPro.entity.Product;
 import ru.vtb.javaPro.entity.User;
+import ru.vtb.javaPro.repository.ProductRepository;
 import ru.vtb.javaPro.repository.UserRepository;
 
 import java.util.List;
@@ -16,6 +18,7 @@ import java.util.List;
 public class UserService implements CommandLineRunner {
 
     private final UserRepository userRepository;
+    private final ProductRepository productRepository;
 
     @Override
     public void run(String... args) {
@@ -31,6 +34,14 @@ public class UserService implements CommandLineRunner {
         user = findUserByName("Evgen");                         // получить запись по username
         log.info("Update user for username {}: " + user.toString(), user.getUsername());
         updateUsernameById(1L, "EvgenUpdate");          // обновить запись по id
+        log.info("Find product for user_id {}: ", user.getId());
+        for (Product product: findByProductWithUser(user)) {
+            log.info(product.toString());
+        }
+        Product product = findProductById(1L);
+        log.info("Find product for product_id = {}", product.getId());
+        log.info(product.toString());
+
     }
 
     public List<User> findAll() {
@@ -64,4 +75,13 @@ public class UserService implements CommandLineRunner {
         userRepository.delete(user);
     }
 
+    public List<Product> findByProductWithUser(User user) {
+        return productRepository.findByUser(user);
+    }
+
+    public Product findProductById(Long id) {
+        return productRepository.findById(id)
+                .orElseThrow(EntityNotFoundException::new);
+    }
 }
+
