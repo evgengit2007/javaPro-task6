@@ -18,15 +18,13 @@ public class Product {
     private String accountNumber;
 
     @Column(name = "balance")
-    private String balance;
+    private double balance;
 
-    @ManyToOne
-    @JoinColumn(name = "type_product_id")
-    private TypeProduct typeProduct;
+    @Column(name = "type_products")
+    private String typeProducts;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @Column(name = "user_id")
+    private Long user;
 
     @Override
     public String toString() {
@@ -34,7 +32,7 @@ public class Product {
                 "id=" + id +
                 ", accountNumber='" + accountNumber + '\'' +
                 ", balance='" + balance + '\'' +
-                ", typeProduct=" + typeProduct +
+                ", typeProducts=" + typeProducts +
                 ", user=" + user +
                 '}';
     }

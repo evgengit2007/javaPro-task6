@@ -18,27 +18,18 @@ values
     ('Vladimir'),
     ('Denis');
 
-CREATE TABLE public.type_product
-(id bigserial PRIMARY KEY,
- name varchar(25) unique);
-
-insert into public.type_product (name)
-values
-    ('account'),
-    ('card');
-
 CREATE TABLE public.products
 (id bigserial PRIMARY KEY,
  account_number varchar(25),
- balance money,
- type_product_id bigint references public.type_product (id),
- user_id bigint references public.users (id));
+ balance real,
+ type_products varchar(25),
+ user_id bigint);
 CREATE INDEX idx_products_id ON public.products(id);
 
-insert into public.products (account_number, balance, type_product_id, user_id)
+insert into public.products (account_number, balance, type_products, user_id)
 values
-    ('40802810345124535123', 123.12, 1, 1),
-    ('6453411547575745431', 323.44, 2, 3),
-    ('1234567889', 53535.00, 2, 3),
-    ('40802810233223322122', 555.12, 1, 1)
+    ('40802810345124535123', 123.12, 'ACCOUNT', 1),
+    ('6453411547575745431', 323.44, 'CARD', 3),
+    ('1234567889', 53535.00, 'CARD', 3),
+    ('40802810233223322122', 555.12, 'ACCOUNT', 1)
 ;

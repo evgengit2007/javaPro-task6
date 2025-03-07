@@ -1,0 +1,45 @@
+http://localhost:8989/products/rest/product?id=1
+{
+    "productList": [
+        {
+            "id": 1,
+            "accountNumber": "40802810345124535123",
+            "balance": 123.12,
+            "typeProducts": "ACCOUNT",
+            "user": 1
+        }
+    ]
+}
+
+http://localhost:8989/products/rest/product?id=4
+{
+    "productList": [
+        {
+            "id": 4,
+            "accountNumber": "40802810233223322122",
+            "balance": 555.12,
+            "typeProducts": "ACCOUNT",
+            "user": 1
+        }
+    ]
+}
+
+http://localhost:8989/products/rest/user?id=3
+{
+    "productList": [
+        {
+            "id": 2,
+            "accountNumber": "6453411547575745431",
+            "balance": 323.44,
+            "typeProducts": "CARD",
+            "user": 3
+        },
+        {
+            "id": 3,
+            "accountNumber": "1234567889",
+            "balance": 53535.0,
+            "typeProducts": "CARD",
+            "user": 3
+        }
+    ]
+}
