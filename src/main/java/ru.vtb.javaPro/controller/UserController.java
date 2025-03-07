@@ -19,12 +19,4 @@ public class UserController {
         return new UserResponse(Collections.singletonList(userService.findUserById(id)));
     }
 
-/*
-
-    @GetMapping("/users")
-    public UserResponse greetings() {
-        List<User> users = userService.findAll();
-        return new UserResponse(users);
-    }
-*/
 }
