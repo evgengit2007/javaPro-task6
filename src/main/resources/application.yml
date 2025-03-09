@@ -1,7 +1,11 @@
 server:
+  servlet:
+    context-path: "/products"
   port: 8989
 
 spring:
+  application:
+    name: product-core
   datasource:
     url: jdbc:postgresql://localhost:5432/javaPro
     username: postgres

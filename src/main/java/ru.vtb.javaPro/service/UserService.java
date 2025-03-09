@@ -3,7 +3,6 @@ package ru.vtb.javaPro.service;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 import ru.vtb.javaPro.entity.User;
 import ru.vtb.javaPro.repository.UserRepository;
@@ -13,25 +12,9 @@ import java.util.List;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class UserService implements CommandLineRunner {
+public class UserService {
 
     private final UserRepository userRepository;
-
-    @Override
-    public void run(String... args) {
-        findAll().forEach(user -> log.info(user.toString()));   // получить все записи
-        User user = findUserById(1L);                           // получить запись по id
-        log.info("Found user for id {} : " + user.toString(), 1L);
-        log.info("Add user for username Leonid");
-        insertUser("Leonid");                            // добавить запись по username
-        log.info("Add user for username Vladislav");
-        user = insertUser("Vladislav");                    // добавить 2-ю запись по username
-        log.info("Delete user for username {}: " + user.toString(), user.getUsername());
-        deleteUser(user);                                       // удалить запись
-        user = findUserByName("Evgen");                         // получить запись по username
-        log.info("Update user for username {}: " + user.toString(), user.getUsername());
-        updateUsernameById(1L, "EvgenUpdate");          // обновить запись по id
-    }
 
     public List<User> findAll() {
         return userRepository.findAll();
@@ -65,3 +48,4 @@ public class UserService implements CommandLineRunner {
     }
 
 }
+

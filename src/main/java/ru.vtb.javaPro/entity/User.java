@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Getter
 @Setter
 @Entity
@@ -16,6 +18,7 @@ public class User {
 
     @Column(name = "username")
     private String username;
+
 
     @Override
     public String toString() {
